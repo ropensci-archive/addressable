@@ -1,0 +1,48 @@
+addressable
+============
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Email Address Validation
+
+## Install
+
+```{r eval=FALSE}
+remotes::install_github("ropenscilabs/addressable")
+```
+
+```{r}
+library("addressable")
+```
+
+## Address
+
+```{r}
+x <- Address$new("User+tag@example.com")
+x$host$host_name
+x$local$local
+x$valid()
+x$fail()
+```
+
+```{r}
+x <- Address$new("user1")
+x$valid()
+x$fail()
+```
+
+## Meta
+
+* Please [report any issues or bugs](https://github.com/ropenscilabs/addressable/issues).
+* License: MIT
+* Get citation information for `addressable` in R doing `citation(package = 'addressable')`
+* Please note that this project is released with a [Contributor Code of Conduct][coc]. By participating in this project you agree to abide by its terms.
+
+[coc]: https://github.com/ropenscilabs/addressable/blob/maddressable/CODE_OF_CONDUCT.md
