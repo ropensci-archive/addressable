@@ -1,7 +1,7 @@
 addressable
 ============
 
-
+![R-CMD-check](https://github.com/ropenscilabs/addressable/workflows/R-CMD-check/badge.svg)
 
 Email Address Validation
 
