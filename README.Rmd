@@ -18,7 +18,7 @@ Email Address Validation
 ## Install
 
 ```{r eval=FALSE}
-remotes::install_github("ropenscilabs/addressable")
+remotes::install_github("ropenscilabs/addressable@main")
 ```
 
 ```{r}

@@ -9,7 +9,7 @@ Email Address Validation
 
 
 ```r
-remotes::install_github("ropenscilabs/addressable")
+remotes::install_github("ropenscilabs/addressable@main")
 ```
 
 
