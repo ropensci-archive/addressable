@@ -36,5 +36,3 @@ test_that("Address forms", {
   expect_equal(x$reference(), "b58996c504c5638798eb6b511e6f49af")
   # expect_equal(EmailAddress.reference("Gmail.User+tag@gmail.com"), "6bdd00c53645790ad9bbcb50caa93880")
 })
-
-

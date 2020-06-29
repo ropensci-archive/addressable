@@ -288,17 +288,17 @@ Local <- R6::R6Class(
       if (nchar(self$local) > self$STANDARD_MAX_SIZE) return(private$set_error("local_size_long"))
       if (!is.null(self$host) && self$host$hosted_service()) {
         if (
-          self$config$config[["local_private_size"]] &&
+          !is.null(self$config$config[["local_private_size"]]) &&
           !self$valid_size_checks(self$config$config[["local_private_size"]])
         ) return(FALSE)
       } else {
         if (
-          self$config$config[["local_size"]] &&
+          !is.null(self$config$config[["local_size"]]) &&
           !self$valid_size_checks(self$config$config[["local_size"]])
         ) return(FALSE)
       }
       if (
-        self$config$config[["mailbox_size"]] &&
+        !is.null(self$config$config[["mailbox_size"]]) &&
         !self$valid_size_checks(self$config$config[["mailbox_size"]])
       ) return(FALSE)
       return(TRUE)
@@ -354,8 +354,8 @@ Local <- R6::R6Class(
       if (!self$valid_size()) return(FALSE)
       if (!self$valid_encoding()) return(FALSE)
       # FIXME: STANDARD_LOCAL_REGEX not available yet, see above
-      # if (FALSE) {
-      if (grepl(self$STANDARD_LOCAL_REGEX, self$local, perl = TRUE)) {
+      if (TRUE) {
+      # if (grepl(self$STANDARD_LOCAL_REGEX, self$local, perl = TRUE)) {
         self$syntax <- "standard"
         return(TRUE)
       } else {
