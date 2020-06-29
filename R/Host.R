@@ -558,11 +558,12 @@ Host <- R6::R6Class(
       } else {
         self$host_name == "localhost"
       }
-    }
+    },
 
     # # Connects to host to test it can receive email. This should NOT be performed
     # # as an email address check, but is provided to assist in problem resolution.
     # # If you abuse this, you *could* be blocked by the ESP.
+    connect = function() stop('`Host$connect()` not working')
     # def connect
     #   smtp = Net::SMTP.new(host_name || ip_address)
     #   smtp.start(@config[:helo_name] || "localhost")

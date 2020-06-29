@@ -74,6 +74,7 @@ x$registration_name
 \item \href{#method-valid_format}{\code{Host$valid_format()}}
 \item \href{#method-valid_ip}{\code{Host$valid_ip()}}
 \item \href{#method-localhost}{\code{Host$localhost()}}
+\item \href{#method-connect}{\code{Host$connect()}}
 \item \href{#method-clone}{\code{Host$clone()}}
 }
 }
@@ -344,6 +345,15 @@ x$registration_name
 \subsection{Method \code{localhost()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Host$localhost(x)}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-connect"></a>}}
+\if{latex}{\out{\hypertarget{method-connect}{}}}
+\subsection{Method \code{connect()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Host$connect()}\if{html}{\out{</div>}}
 }
 
 }

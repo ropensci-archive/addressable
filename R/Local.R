@@ -48,12 +48,12 @@ Local <- R6::R6Class(
     # RFC5322 Token: token."token".token (dot-separated tokens)
     #   Quoted Token can also have: SPACE \" \\ ( ) , : ; < > @ [ \ ] .
     # FIXME: still need to translate this to R regex
-    # STANDARD_LOCAL_WITHIN = "
-    #   (?: [\p{L}\p{N}\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\(\)]+
-    #     | \" (?: \\[\" \\] | [\x20-\x21\x23-\x2F\x3A-\x40\x5B\x5D-\x60\x7B-\x7E\p{L}\p{N}] )+ \" )
-    #   (?: \.  (?: [\p{L}\p{N}\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~\(\)]+
-    #           | \" (?: \\[\" \\] | [\x20-\x21\x23-\x2F\x3A-\x40\x5B\x5D-\x60\x7B-\x7E\p{L}\p{N}] )+ \" ) )* /x",
-
+    # https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-using-a-regular-expression
+    # https://github.com/cran/assertive.data/blob/8ae9bfa510f1a26c867f4babba83b6fa9f0689f4/R/is-data.R#L213
+    STANDARD_LOCAL_WITHIN = "/
+         (?: [[A-Za-z][0-9]\\!\\#\\$\\%\\&\\'\\*\\+\\-\\/\\=\\?\\^\\_\\`\\{\\|\\}\\~\\(\\)]+ | \" (?: \\[\" \\] | [\x20-\x21\x23-\x2F\x3A-\x40\x5B\x5D-\x60\x7B-\x7E[A-Za-z][0-9]] )+ \" )
+(?: \\.  (?: [[A-Za-z][0-9]\\!\\#\\$\\%\\&\\'\\*\\+\\-\\/\\=\\?\\^\\_\\`\\{\\|\\}\\~\\(\\)]+ | \" (?: \\[\" \\] | [\x20-\x21\x23-\x2F\x3A-\x40\x5B\x5D-\x60\x7B-\x7E[A-Za-z][0-9]] )+ \" ) )* /x",
+    # STANDARD_LOCAL_WITHIN = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")",
     REDACTED_REGEX = '/\\A \\{ [0-9a-f]{40} \\} \\z/x', # {sha1}
 
     STANDARD_LOCAL_REGEX = NULL,
@@ -71,7 +71,7 @@ Local <- R6::R6Class(
       self$SPECIAL_MAILBOXES <- c(self$BUSINESS_MAILBOXES, self$NETWORK_MAILBOXES,
         self$SERVICE_MAILBOXES, self$SYSTEM_MAILBOXES, self$ROLE_MAILBOXES)
       # FIXME: STANDARD_LOCAL_WITHIN not available yet
-      self$STANDARD_LOCAL_REGEX <- ""
+      self$STANDARD_LOCAL_REGEX <- self$STANDARD_LOCAL_WITHIN
         # sprintf("\\A %s \\z/x", self$STANDARD_LOCAL_WITHIN)
       self$set_local(local)
       return(self)
@@ -354,8 +354,8 @@ Local <- R6::R6Class(
       if (!self$valid_size()) return(FALSE)
       if (!self$valid_encoding()) return(FALSE)
       # FIXME: STANDARD_LOCAL_REGEX not available yet, see above
-      # if (grepl(STANDARD_LOCAL_REGEX, self$local, perl = TRUE)) {
-      if (FALSE) {
+      # if (FALSE) {
+      if (grepl(self$STANDARD_LOCAL_REGEX, self$local, perl = TRUE)) {
         self$syntax <- "standard"
         return(TRUE)
       } else {
