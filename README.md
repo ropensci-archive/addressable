@@ -1,8 +1,8 @@
 addressable
 ============
 
-![R-CMD-check](https://github.com/ropenscilabs/addressable/workflows/R-CMD-check/badge.svg)
-[![codecov](https://codecov.io/gh/ropenscilabs/addressable/branch/master/graph/badge.svg)](https://codecov.io/gh/ropenscilabs/addressable)
+![R-CMD-check](https://github.com/ropensci/addressable/workflows/R-CMD-check/badge.svg)
+[![codecov](https://codecov.io/gh/ropensci/addressable/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/addressable)
 
 Email Address Validation
 
@@ -10,7 +10,7 @@ Email Address Validation
 
 
 ```r
-remotes::install_github("ropenscilabs/addressable@main")
+remotes::install_github("ropensci/addressable@main")
 ```
 
 
@@ -44,9 +44,9 @@ x$fail()
 
 ## Meta
 
-* Please [report any issues or bugs](https://github.com/ropenscilabs/addressable/issues).
+* Please [report any issues or bugs](https://github.com/ropensci/addressable/issues).
 * License: MIT
 * Get citation information for `addressable` in R doing `citation(package = 'addressable')`
 * Please note that this project is released with a [Contributor Code of Conduct][coc]. By participating in this project you agree to abide by its terms.
 
-[coc]: https://github.com/ropenscilabs/addressable/blob/maddressable/CODE_OF_CONDUCT.md
+[coc]: https://github.com/ropensci/addressable/blob/maddressable/CODE_OF_CONDUCT.md
